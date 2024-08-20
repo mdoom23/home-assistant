@@ -18,7 +18,7 @@ blueprint:
     light_color_temp:
       name: Light Color Temperature
       description: The color temperature of the light in Kelvins.
-      default: 3500
+      default: 5000
       selector:
         number:
           min: 2500
