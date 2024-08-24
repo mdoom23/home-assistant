@@ -48,8 +48,8 @@ action:
             target:
               entity_id: !input light
             data_template:
-              brightness: "{{ (input.light_brightness / 100 * 255) | int }}"
-              color_temp: "{{ input.light_color_temp }}"
+              brightness: "{{ (input.light_brightness | int * 255 / 100) | int }}"
+              color_temp: "{{ input.light_color_temp | int }}"
           - service: logbook.log
             data_template:
               name: "Door Light Control"
