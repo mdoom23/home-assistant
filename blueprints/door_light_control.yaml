@@ -47,13 +47,9 @@ action:
           - service: light.turn_on
             target:
               entity_id: !input light
-            data_template:
+            data:
               brightness: "{{ (input.light_brightness | int * 255 / 100) | int }}"
               color_temp: "{{ input.light_color_temp | int }}"
-          - service: logbook.log
-            data_template:
-              name: "Door Light Control"
-              message: "Light turned on with brightness: {{ input.light_brightness }} and color temp: {{ input.light_color_temp }}"
       - conditions:
           - condition: state
             entity_id: !input door_sensor
@@ -62,7 +58,3 @@ action:
           - service: light.turn_off
             target:
               entity_id: !input light
-          - service: logbook.log
-            data:
-              name: "Door Light Control"
-              message: "Light turned off"
